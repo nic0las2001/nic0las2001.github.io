@@ -2,38 +2,60 @@
   <head>
     <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
     <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <style>
+    .interface {
+      width:500px;
+      background-color:#8a8aed;
+      margin: 5px 5px 5px 5px;
+      border-style: solid;
+      border-width: 5px;
+      border-color: black;
+      padding:10px;
+    }
+    .button_aspect {
+      background-color:#c0c0fa;
+      border-style: solid;
+      border-width: 0.5px;
+      border-color: black;
+      padding:5px;
+    }
+    </style>
   </head>
   <body>
-    <div>Select the interpolation table:</div>
-    <!--<div>1: Subsonic Isentropic, 2: Supersonic Isentropic, 3: Normal Shocks, 4: Oblique Shocks</div>-->
-  <!--<input type="text" id="table-input"/> -->
-  <form id='form' method = "post" target = "_blank">
-  <input id="table-input1" type="radio" name="table" value="1"/>Subsonic Isentropic<br>
-  <input id="table-input2" type="radio" name="table" value="2"/>Supersonic Isentropic<br>
-  <input id="table-input3" type="radio" name="table" value="3"/>Normal Shocks<br>
-  <input id="table-input4" type="radio" name="table" value="4"/>Oblique Shocks<br>
-  </form>
-  <button id="submit-table" type="submit" pys-onClick="hide">OK</button>
-  <div id="mach-text" hidden><br>Input the Mach number</div>
-  <input type="text" id="mach-input" hidden='hidden'/>
-  <!--<button id="submit-mach" type="submit" pys-onClick="submitFunc" hidden>OK</button>-->
-  <div><br></div>
-  <div id="val-output"></div>
-  <div>Input number corresponding to the type of value you have:</div>
-  <input type="text" id="char-input"/>
-  <!--<button id="submit-char" type="submit" pys-onClick="submitFunc">OK</button><-->
-  <div><br></div>
-  <div>Input the value you have (ex: M = 1.2):</div>
-  <input type="text" id="char-val-input"/>
-  <button id="submit-all" type="submit" pys-onClick="main">Submit</button>
-  <button id="reset-all" type="submit" pys-onClick="reset">Reset</button>
-  <div><br></div>
-  <div id="test-output-0"></div>
-  <div id="test-output-1"></div>
-  <div id="test-output-2"></div>
-  <div id="test-output-3"></div>
-  <div id="test-output-4"></div>
-  <div id="test-output-5"></div>
+  <div id="app" class="interface">
+    <p><u><b>Select the interpolation table:</u></b></p>
+      <!--<div>1: Subsonic Isentropic, 2: Supersonic Isentropic, 3: Normal Shocks, 4: Oblique Shocks</div>-->
+    <!--<input type="text" id="table-input"/> -->
+    <form id='form' method = "post" target = "_blank">
+    <input id="table-input1" type="radio" name="table" value="1" pys-onclick="hide"/> Subsonic Isentropic<br>
+    <input id="table-input2" type="radio" name="table" value="2" pys-onclick="hide"/> Supersonic Isentropic<br>
+    <input id="table-input3" type="radio" name="table" value="3" pys-onclick="hide"/> Normal Shocks<br>
+    <input id="table-input4" type="radio" name="table" value="4" pys-onclick="hide"/> Oblique Shocks<br>
+    </form>
+    <button id="submit-table" type="submit" pys-onClick="hide" class="button_aspect" hidden> <b>OK</b></button>
+    <div id="mach-text" hidden>Input the Mach number</div>
+    <input type="text" id="mach-input" hidden='hidden'/>
+    <!--<button id="submit-mach" type="submit" pys-onClick="submitFunc" hidden>OK</button>-->
+    <div><br></div>
+    <div id="val-output"></div>
+    <div>Input number corresponding to the type of value you have:</div>
+    <input type="text" id="char-input"/>
+    <!--<button id="submit-char" type="submit" pys-onClick="submitFunc">OK</button><-->
+    <div><br></div>
+    <div>Input the value you have (ex: M = 1.2):</div>
+    <input type="text" id="char-val-input"/>
+    <button id="submit-all" type="submit" pys-onClick="main" class="button_aspect"><b>Submit</b></button>
+    <button id="clear-all" type="submit" pys-onClick="clear" class="button_aspect"><b>Clear</b></button>
+    <div><br></div>
+    <code>
+    <div id="test-output-0"></div>
+    <div id="test-output-1"></div>
+    <div id="test-output-2"></div>
+    <div id="test-output-3"></div>
+    <div id="test-output-4"></div>
+    <div id="test-output-5"></div>
+  </code>
+  </div>
 <py-script>
 import sys
 from js import console, document
@@ -49,14 +71,14 @@ def error_func(msg):
     pyscript.write('test-output-0',msg)
     sys.exit(0)
 
-def reset(*args, **kwargs):
+def clear(*args, **kwargs):
     for i in range(0,6):
         outputstr = 'test-output-'+str(i)
         pyscript.write(outputstr,"")
     return 0
 
 def hide(*args, **kwargs):
-#Table dictionnaries
+    #Table dictionnaries
     sub_isentropic_dict = {0:"M", 1:"P0/P", 2:"ρ0/ρ", 3:"T0/T", 4:"A/A*"}
     sup_isentropic_dict = {0:"M", 1:"P0/P", 2:"ρ0/ρ", 3:"T0/T", 4:"A/A*", 5:"ν"}
     normal_shocks_dict = {0:"M", 1:"P2/P1", 2:"ρ2/ρ1", 3:"T2/T1", 4:"M2", 5:"P02/P1"}
