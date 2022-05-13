@@ -22,6 +22,7 @@
     </style>
   </head>
   <body>
+  <!-- App block, blue region-->
   <div id="app" class="interface">
     <div id="warning-load"><i>It may take up to 10s for the app to load when the page is opened. <br><br></i></div>
     <p><u><b>Select the interpolation table:</u></b></p>
@@ -31,19 +32,66 @@
     <input id="table-input1" type="radio" name="table" value="1" pys-onclick="hide"/> Subsonic Isentropic<br>
     <input id="table-input2" type="radio" name="table" value="2" pys-onclick="hide"/> Supersonic Isentropic<br>
     <input id="table-input3" type="radio" name="table" value="3" pys-onclick="hide"/> Normal Shocks<br>
-    <input id="table-input4" type="radio" name="table" value="4" pys-onclick="hide"/> Oblique Shocks<br>
+    <input id="table-input4" type="radio" name="table" value="4" pys-onclick="hide"/> Oblique Shocks
     </form>
-    <button id="submit-table" type="submit" pys-onClick="hide" class="button_aspect" hidden> <b>OK</b></button>
+    <!--<button id="submit-table" type="submit" pys-onClick="hide" class="button_aspect" hidden> <b>OK</b></button> -->
+
+    <!-- Hidden div to show when it's loaded -->
     <div id="app_rest" hidden>
-    <div id="mach-text" hidden>Input the Mach number</div>
+    <div id="mach-text" hidden>Input the Mach number (one decimal place, can't be interpolated):</div>
     <input type="text" id="mach-input" hidden='hidden'/>
     <!--<button id="submit-mach" type="submit" pys-onClick="submitFunc" hidden>OK</button>-->
-    <div><br></div>
+
+    <!-- Hidden forms -->
+    <!--   sub_isentropic_dict = {0:"M", 1:"P0/P", 2:"ρ0/ρ", 3:"ρ0/ρ", 4:"A/A*"}-->
+    <form id="subsonic-form" method = "post" target = "_blank" hidden>
+    <p> Choose a parameter: </p>
+    <input id="subsonic1" type="radio" name="subsonic" value='0'> M<br>
+    <input id="subsonic2" type="radio" name="subsonic" value='1'> P0/P<br>
+    <input id="subsonic3" type="radio" name="subsonic" value='2'> ρ0/ρ<br>
+    <input id="subsonic4" type="radio" name="subsonic" value='3'> T0/T<br>
+    <input id="subsonic5" type="radio" name="subsonic" value='4'> A/A*<br>
+    </form>
+
+      <!--    {0:"M", 1:"P0/P", 2:"ρ0/ρ", 3:"T0/T", 4:"A/A*", 5:"ν"}-->
+    <form id="supersonic-form" method = "post" target = "_blank" hidden>
+    <p> Choose a parameter: </p>
+    <input id="supersonic1" type="radio" name="supersonic" value='0'> M<br>
+    <input id="supersonic2" type="radio" name="supersonic" value='1'> P0/P<br>
+    <input id="supersonic3" type="radio" name="supersonic" value='2'> ρ0/ρ<br>
+    <input id="supersonic4" type="radio" name="supersonic" value='3'> T0/T<br>
+    <input id="supersonic5" type="radio" name="supersonic" value='4'> A/A*<br>
+    <input id="supersonic6" type="radio" name="supersonic" value='5'> ν<br>
+    </form>
+
+    <!--  normal  {0:"M", 1:"P2/P1", 2:"ρ2/ρ1", 3:"T2/T1", 4:"M2", 5:"P02/P1"}-->
+    <form id="normal-form" method = "post" target = "_blank" hidden>
+    <p> Choose a parameter: </p>
+    <input id="normal1" type="radio" name="normal" value='0'> M<br>
+    <input id="normal2" type="radio" name="normal" value='1'> P2/P1<br>
+    <input id="normal3" type="radio" name="normal" value='2'> ρ2/ρ1<br>
+    <input id="normal4" type="radio" name="normal" value='3'> T2/T1<br>
+    <input id="normal5" type="radio" name="normal" value='4'> M2<br>
+    <input id="normal6" type="radio" name="normal" value='5'> P02/P1<br>
+    </form>
+
+    <!--  oblique  {1:"δ - deflection angle (θ)", 2:"β - shock angle", 3:"P2/P1", 4:"ρ2/ρ1", 5:"T2/T1", 6:"M2"}-->
+    <form id="oblique-form" method = "post" target = "_blank" hidden>
+    <p> <br>Choose a parameter: </p>
+    <input id="oblique1" type="radio" name="oblique" value='1'> δ - deflection angle (θ)<br>
+    <input id="oblique2" type="radio" name="oblique" value='2'> β - shock angle<br>
+    <input id="oblique3" type="radio" name="oblique" value='3'> P2/P1<br>
+    <input id="oblique4" type="radio" name="oblique" value='4'> ρ2/ρ1<br>
+    <input id="oblique5" type="radio" name="oblique" value='5'> T2/T1<br>
+    <input id="oblique6" type="radio" name="oblique" value='6'> M2<br>
+    </form>
+
+    <div id='old_parameter_selection' hidden>
     <div id="val-output"></div>
     <div>Input number corresponding to the type of value you have in the above list (if not here wait a bit longer, and reselect the table):</div>
     <input type="text" id="char-input"/>
     <!--<button id="submit-char" type="submit" pys-onClick="submitFunc">OK</button><-->
-    <div><br></div>
+    <div><br></div></div>
     <div>Input the numerical value you have (ex: for a Mach number of 1.254, just write: <code>1.254</code>):</div>
     <input type="text" id="char-val-input"/>
     <button id="submit-all" type="submit" pys-onClick="main" class="button_aspect"><b>Submit</b></button>
@@ -66,6 +114,10 @@ import cgi, cgitb
 def displayRest(*args, **kwargs):
     Element('app_rest').element.hidden = ''
     pyscript.write("warning-load","")
+    Element('subsonic-form').element.reset()
+    Element('supersonic-form').element.reset()
+    Element('normal-form').element.reset()
+    Element('oblique-form').element.reset()
 
 def submitFunc(*args, **kwargs):
     return 0
@@ -81,7 +133,28 @@ def clear(*args, **kwargs):
     for i in range(0,6):
         outputstr = 'test-output-'+str(i)
         pyscript.write(outputstr,"")
+        Element('char-val-input').element.value = ''
     return 0
+
+def type_known_func():
+    for i in range(1,6):
+      elname = 'subsonic'+str(i)
+      if Element(elname).element.checked:
+        output = int(Element(elname).element.value)
+        return output
+    for i in range(1,7):
+      elname = 'supersonic'+str(i)
+      if Element(elname).element.checked:
+        output = int(Element(elname).element.value)
+        return output
+      elname = 'normal'+str(i)
+      if Element(elname).element.checked:
+        output = int(Element(elname).element.value)
+        return output
+      elname = 'oblique'+str(i)
+      if Element(elname).element.checked:
+        output = int(Element(elname).element.value)
+        return output
 
 def hide(*args, **kwargs):
     #Table dictionnaries
@@ -99,6 +172,15 @@ def hide(*args, **kwargs):
 
     chosen_dict = value_keys[output]
     pyscript.write('val-output',str(chosen_dict))
+
+    #Hide all forms
+    Element('subsonic-form').element.hidden = 'hidden'
+    Element('supersonic-form').element.hidden = 'hidden'
+    Element('normal-form').element.hidden = 'hidden'
+    Element('oblique-form').element.hidden = 'hidden'
+
+    k = sorting(output)
+
     if output != 4:
       Element('mach-text').element.hidden = 'hidden'
       Element('mach-input').element.hidden = 'hidden'
@@ -107,6 +189,17 @@ def hide(*args, **kwargs):
       Element('mach-text').element.hidden = ''
       Element('mach-input').element.hidden = ''
       Element('submit-mach').element.hidden = ''
+
+def sorting(output):
+    if output == 1:
+      Element('subsonic-form').element.hidden = ''
+    elif output == 2:
+      Element('supersonic-form').element.hidden = ''
+    elif output == 3:
+      Element('normal-form').element.hidden = ''
+    elif output == 4:
+      Element('oblique-form').element.hidden = ''
+    return 0
 
 def cont_func(dict_val, used_dict, table_val):
     if table_val == 4:
@@ -179,7 +272,7 @@ def main(*args, **kwargs):
     value_keys = {1:sub_isentropic_dict, 2:sup_isentropic_dict, 3:normal_shocks_dict, 4:oblique_shocks_dict}
 
     #Parameter input
-    type_known = int(Element('char-input').element.value)
+    type_known = type_known_func() #int(Element('char-input').element.value)
     value_known = float(Element('char-val-input').element.value)
     used_dict = value_keys[table_val]
     printstr = used_dict[type_known] + ': ' + str(value_known) + 'BREAK'
