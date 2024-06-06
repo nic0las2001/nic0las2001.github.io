@@ -3,6 +3,11 @@ layout: default
 refactor: true
 ---
 
+<header>
+  <h1>Welcome to my website!</h1>
+  <p>Find my latest updates below ⬇️</p>
+</header>
+
 {% include lang.html %}
 
 {% assign pinned = site.posts | where: 'pin', 'true' %}

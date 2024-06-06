@@ -1,14 +1,14 @@
 ---
 # the default layout is 'page'
 icon: fas fa-info-circle
-order: 4
+order: 1
 ---
 
-I am a PhD student ([Aerosol Science CDT](https://www.aerosol-cdt.ac.uk/)) and Aerospace Engineering (MEng) graduate from the University of Bristol. I am originally French and moved to the UK for my higher education. At university, I developed highly relevant theoretical and applied engineering knowledge, achieving 'First Class Honours' and maintaining a high average (76%) throughout my degree.
+Before pursuing a PhD, I obtained the French Baccalaureate at [Ecole Jeannine Manuel](https://www.ecolejeanninemanuel.org.uk/fr/) in Paris. I then completed an undergraduate MEng degree in Aerospace Engineering at the [University of Bristol](https://www.bristol.ac.uk/), achieving 'First Class Honours' with an average of 76%. With a strong interest in simulations, modeling, and experience in various software packages and coding languages, I joined the [Aerosol Science CDT](https://www.aerosol-cdt.ac.uk/) in 2023 as a postgraduate researcher in aerosol resuspension.
 
-My current PhD research is on "Data-Informed Modelling of Aerosol Resuspension Under Aerodynamic Loads" and is undertaken at the University of Bristol under the supervision of [Dr Alberto Gambaruto](https://research-information.bris.ac.uk/en/persons/alberto-m-gambaruto), [Prof Karen Aplin](https://research-information.bris.ac.uk/en/persons/karen-l-aplin) and [Dr Nick Zang](https://research-information.bris.ac.uk/en/persons/b-zang). 
+My current PhD research focuses on "Data-Informed Modelling of Aerosol Resuspension Under Aerodynamic Loads" at the University of Bristol. I am working under the supervision of [Dr Alberto Gambaruto](https://research-information.bris.ac.uk/en/persons/alberto-m-gambaruto), [Prof Karen Aplin](https://research-information.bris.ac.uk/en/persons/karen-l-aplin), and [Dr Nick Zang](https://research-information.bris.ac.uk/en/persons/b-zang). The project aims to investigate the mechanisms behind resuspension, identify key influencing parameters, and develop machine-learning-based semi-empirical models for better prediction. The research involves state-of-the-art experimental and numerical approaches such as wind tunnel testing, CFD simulations, and machine learning models (PINNs).
 
-I am strongly interested in aviation, space and generally the aerospace sector where my current experience and eagerness to learn new skills can make a valuable contribution. I am particularly interested in simulations and modelling and have experience with a broad range of relevant software packages and coding languages.
+In addition to my research, I have a strong interest in aviation, aerospace, and the tech sector. My major hobbies include playing tennis, walking, skiing, traveling, and undertaking miscellaneous coding projects like this website!
 
 
 
