@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "FARG Poster Session - 19/06/24"
-date: 2024-06-06 15:34 +0100
+date: 2024-06-19 15:34 +0100
 tag: [poster, aerodynamics, fluids, resuspension] 
 categories: [Conferences]
 ---
@@ -9,6 +9,8 @@ categories: [Conferences]
 ## Investigation of Particle-Surface Interactions for Data-Informed Modelling of Aerosol Resuspension
 ![Investigation of Particle-Surface Interactions for Data-Informed Modelling of Aerosol Resuspension](assets/posters/19.06.24_aero_group.png)
 
+## Distinctions
+Awarded 3rd Best Poster prize by the FARG session attendees' vote.
 
 ## References
 - Biasi, L. (2001) ‘Use of a simple model for the interpretation of experimental data on particle resuspension in turbulent flows’, Aerosol Science [Preprint].
