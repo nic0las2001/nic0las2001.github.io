@@ -7,7 +7,7 @@ categories: [Conferences]
 ---
 
 ## Investigation of Particle-Surface Interactions for Data-Informed Modelling of Aerosol Resuspension
-![Investigation of Particle-Surface Interactions for Data-Informed Modelling of Aerosol Resuspension](assets/posters/19.06.24_aero_group.png)
+![Investigation of Particle-Surface Interactions for Data-Informed Modelling of Aerosol Resuspension](user_assets/posters/19.06.24_aero_group.png)
 
 ## Distinctions
 Awarded 3rd Best Poster prize by the FARG session attendees' vote.
