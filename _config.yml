@@ -223,5 +223,5 @@ jekyll-archives:
     tag: /tags/:name/
     category: /categories/:name/
 
-include:
-  - assets/js/dist
+# include:
+#   - assets/js/dist
