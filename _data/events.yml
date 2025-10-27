@@ -1,7 +1,7 @@
 - title: "Annual Aerosol Science Conference"
   link: "https://aerosol-soc.com/events/annual-aerosol-science-conference-2025/"
   city: "The Guildhall, York"
-  description: "[Poster](/posts/aasc-2025/) presentation"
+  description: "[Poster](/posts/posters/aasc-2025/) presentation"
   date: "2025-10-28"
 
 - title: "Resuspension Grand Challenge"
@@ -31,7 +31,7 @@
 - title: "Annual Aerosol CDT Conference"
   link: "https://www.aerosol-cdt.ac.uk/2024-annual-conference/"
   city: "Marriott Hotel, Bristol"
-  description: "[Poster](/posts/cdt-conf-2024/) presentation"
+  description: "[Poster](/posts/posters/cdt-conf-2024/) presentation"
   date: "2024-04-30"
 
 - title: "CTR Wilson Meeting for Atmospheric Electricity"
@@ -43,7 +43,7 @@
 - title: "Annual Aerosol CDT Conference"
   link: "https://www.aerosol-cdt.ac.uk/2025-annual-conference/"
   city: "Edgbaston Hotel, Uni of Birmingham"
-  description: "[Poster](/posts/cdt-conf-2025/) presentation"
+  description: "[Poster](/posts/posters/cdt-conf-2025/) presentation"
   date: "2025-05-06"
 
 - title: "Annual Aerosol Science Conference"
